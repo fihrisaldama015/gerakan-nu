@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BERITA_DUMMY } from "./data";
+import { BERITA_DUMMY } from "../utils/data";
 import NewsCard from "./molecules/NewsCard";
 
 function Berita() {

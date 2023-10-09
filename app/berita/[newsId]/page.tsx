@@ -1,15 +1,9 @@
+import { BERITA_DUMMY } from "@/utils/data";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
-import Image from "next/image";
-import { BERITA_DUMMY } from "@/components/data";
-import Berita from "@/components/Berita";
 import NewsCard from "@/components/molecules/NewsCard";
-
-const getDetailBerita = (id: number): Berita => {
-  const berita = BERITA_DUMMY.find(
-    (item: Berita, index: number) => item.id === id
-  );
-  return berita as Berita;
-};
+import { getDetailBerita } from "@/utils/berita";
+import Image from "next/image";
+import Link from "next/link";
 
 function NewsDetail({ params }: { params: { newsId: string } }) {
   const berita = getDetailBerita(parseInt(params.newsId));
@@ -88,10 +82,12 @@ function NewsDetail({ params }: { params: { newsId: string } }) {
           <Image src="/icons/dislike.svg" alt="like" width={50} height={50} />
           <span className="text-4xl font-bold text-neutral-900">10</span>
         </div>
-        <div className="flex items-center gap-2">
-          <Image src="/icons/comment.svg" alt="like" width={50} height={50} />
-          <span className="text-4xl font-bold text-neutral-900">10</span>
-        </div>
+        <Link href={`/berita/${params.newsId}/komentar`}>
+          <div className="flex items-center gap-2">
+            <Image src="/icons/comment.svg" alt="like" width={50} height={50} />
+            <span className="text-4xl font-bold text-neutral-900">10</span>
+          </div>
+        </Link>
         <div className="flex items-center gap-2">
           <Image src="/icons/share.svg" alt="like" width={50} height={50} />
         </div>
