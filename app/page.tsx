@@ -1,6 +1,7 @@
 import Berita from "@/components/Berita";
 import Hero from "@/components/Hero";
 import Layanan from "@/components/Layanan";
+import Live from "@/components/Live";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Layanan />
       <Berita />
+      <Live />
     </main>
   );
 }

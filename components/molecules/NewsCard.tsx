@@ -6,10 +6,9 @@ type NewsCardProps = {
   imgUrl: string;
   title: string;
   date: string;
-  tags: string;
 };
 
-function NewsCard({ index, imgUrl, title, date, tags }: NewsCardProps) {
+function NewsCard({ index, imgUrl, title, date }: NewsCardProps) {
   return (
     <div className="flex flex-col gap-4 max-w-[400px]">
       <Image
@@ -21,14 +20,14 @@ function NewsCard({ index, imgUrl, title, date, tags }: NewsCardProps) {
       />
       <div>
         <p className="text-neutral-600 font-semibold tracking-tight text-xl">
-          {tags} | {date}
+          BERITA | {date}
         </p>
         <p className="text-[22px] text-neutral-950 font-semibold tracking-tight">
           {title}
         </p>
       </div>
       <Link
-        href={`/news/${index}`}
+        href={`/berita/${index}`}
         className="text-blue_primary font-bold text-xl"
       >
         SELENGKAPNYA
