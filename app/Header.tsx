@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <header className="py-4 px-10 flex justify-between">
+    <header className="fixed bg-white w-screen h-[6rem] shadow-md py-4 px-10 flex justify-between">
       <Image
         src="/logo_navbar.svg"
         height={180}

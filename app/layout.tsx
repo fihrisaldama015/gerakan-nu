@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="id">
       <body className={poppins.className}>
         <Header />
-        {children}
+        <main className="pt-[6rem]">{children}</main>
         <Footer />
       </body>
     </html>
