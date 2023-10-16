@@ -6,7 +6,7 @@ import Live from "@/components/Live";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <Hero />
+      <Hero page="home" />
       <Layanan />
       <Berita />
       <Live />

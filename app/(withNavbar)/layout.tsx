@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Header from "./Header";
-import { poppins } from "./fonts";
-import "./globals.css";
 import Footer from "./Footer";
+import Header from "./Header";
+import { poppins } from "@/fonts";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Gerakan Nahdliyin Bersatu",
