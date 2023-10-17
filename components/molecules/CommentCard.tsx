@@ -28,7 +28,7 @@ function CommentCard({ data }: CommentProps) {
       </div>
       <div className="flex gap-4 items-start">
         <Image
-          src="/icons/avatar.png"
+          src="/icons/avatar.svg"
           width={50}
           height={50}
           alt="avatar"

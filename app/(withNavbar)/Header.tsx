@@ -1,26 +1,25 @@
 import NavbarDropdown from "@/components/NavbarDropdown";
+import NavbarMenu from "@/components/molecules/NavbarMenu";
 import Image from "next/image";
+import Link from "next/link";
 
 function Header() {
   return (
     <header className="fixed bg-white w-screen h-[6rem] shadow-md py-4 px-10 flex justify-between">
-      <Image
-        src="/logo_navbar.svg"
-        height={180}
-        width={180}
-        alt="logo GNB"
-        className="w-[180px] h-auto object-contain"
-        priority
-        quality={50}
-      />
+      <Link href="/">
+        <Image
+          src="/logo_navbar.svg"
+          height={180}
+          width={180}
+          alt="logo GNB"
+          className="w-[180px] h-auto object-contain"
+          priority
+          quality={50}
+        />
+      </Link>
       <div className="flex gap-4 items-center">
         <NavbarDropdown />
-        <button className="py-1.5 px-4 rounded-lg bg-green_primary font-semibold text-white">
-          Login
-        </button>
-        <button className="py-1.5 px-4 rounded-lg bg-blue_primary font-semibold text-white">
-          Daftar
-        </button>
+        <NavbarMenu />
       </div>
     </header>
   );
