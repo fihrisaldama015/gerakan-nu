@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { poppins } from "@/fonts";
 import "../globals.css";
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
 
 export const metadata: Metadata = {
   title: "Gerakan Nahdliyin Bersatu",

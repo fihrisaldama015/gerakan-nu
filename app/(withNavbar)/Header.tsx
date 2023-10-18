@@ -7,7 +7,7 @@ import Link from "next/link";
 function Header() {
   const accessToken = cookies().get("accessToken")!;
   return (
-    <header className="fixed bg-white w-screen h-[6rem] shadow-md py-4 px-10 flex justify-between">
+    <header className="fixed z-50 bg-white w-screen h-[6rem] shadow-md py-4 px-10 flex justify-between">
       <Link href="/">
         <Image
           src="/logo_navbar.svg"

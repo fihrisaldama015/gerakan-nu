@@ -18,3 +18,7 @@ type User = {
   pendidikan?: string;
   pekerjaan?: string;
 };
+
+interface StringObject {
+  [key: string]: string;
+}
