@@ -15,11 +15,20 @@ function InputPassword({
 
   return (
     <div className="relative">
-      <div className="absolute flex right-4 items-center ml-2 h-full">
+      <input
+        type={showPassword ? "text" : "password"}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
+        className="py-4 px-7 w-full ring-1 rounded-[10px] placeholder:font-bold focus:outline-blue_primary"
+      />
+      <div className="absolute flex top-0 right-4 items-center ml-2 h-full">
         <button
           type="button"
           onClick={() => setShowPassword((v) => !v)}
-          className="px-1 block focus:outline-none"
+          className="px-1 block focus:outline-blue_primary"
+          tabIndex={0}
         >
           <div className={`${showPassword ? "hidden" : ""}`}>
             <svg
@@ -61,15 +70,6 @@ function InputPassword({
           </div>
         </button>
       </div>
-      <input
-        type={showPassword ? "text" : "password"}
-        id="email"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className="py-4 px-7 w-full ring-1 rounded-[10px] placeholder:font-bold focus:outline-blue_primary"
-      />
     </div>
   );
 }

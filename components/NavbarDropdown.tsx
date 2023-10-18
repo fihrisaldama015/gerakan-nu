@@ -1,11 +1,11 @@
 "use client";
-import { usePathname } from "next/navigation";
-import ArrowDown from "./atoms/arrow";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-function NavbarDropdown() {
+import ArrowDown from "./atoms/arrow";
+
+function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
   const pathname = usePathname();
-  console.log(pathname.split("/")[1]);
   if (pathname.split("/")[1] === "admin") {
     return (
       <ul className="flex gap-8 mr-4 text-lg font-semibold">
@@ -37,16 +37,58 @@ function NavbarDropdown() {
     );
   }
 
+  if (!isLogin) {
+    return (
+      <ul className="flex gap-8 mr-4 text-lg font-semibold">
+        <li className="flex gap-[10px] items-center">
+          <p>Event</p>
+          <ArrowDown stroke="black" />
+        </li>
+        <Link href="/berita">
+          <li className="flex gap-[10px] items-center">
+            <p
+              className={`${pathname === "/berita" ? "text-blue_primary" : ""}`}
+            >
+              Berita
+            </p>
+            <ArrowDown stroke="black" />
+          </li>
+        </Link>
+      </ul>
+    );
+  }
+
   return (
     <ul className="flex gap-8 mr-4 text-lg font-semibold">
+      <Link href="/">
+        <li className="flex gap-[10px] items-center">
+          <p className={`${pathname === "/" ? "text-blue_primary" : ""}`}>
+            Beranda
+          </p>
+        </li>
+      </Link>
+      <Link href="/berita">
+        <li className="flex gap-[10px] items-center">
+          <p className={`${pathname === "/berita" ? "text-blue_primary" : ""}`}>
+            Berita
+          </p>
+          <ArrowDown stroke="black" />
+        </li>
+      </Link>
       <li className="flex gap-[10px] items-center">
-        <p>Event</p>
+        <p>Notifikasi</p>
         <ArrowDown stroke="black" />
       </li>
-      <li className="flex gap-[10px] items-center">
-        <p>Berita</p>
-        <ArrowDown stroke="black" />
-      </li>
+      <Link href="/profile">
+        <li className="flex gap-[10px] items-center">
+          <p
+            className={`${pathname === "/profile" ? "text-blue_primary" : ""}`}
+          >
+            Profil
+          </p>
+          <ArrowDown stroke="black" />
+        </li>
+      </Link>
     </ul>
   );
 }

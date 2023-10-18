@@ -6,32 +6,60 @@ type NewsCardProps = {
   imgUrl: string;
   title: string;
   date: string;
+  horizontal?: true;
+  description?: string;
 };
 
-function NewsCard({ index, imgUrl, title, date }: NewsCardProps) {
+function NewsCard({
+  index,
+  imgUrl,
+  title,
+  date,
+  horizontal,
+  description,
+}: NewsCardProps) {
   return (
-    <div className="flex flex-col gap-4 max-w-[400px]">
-      <Image
-        src={imgUrl}
-        width={400}
-        height={244}
-        alt="post_image"
-        className="h-auto w-auto object-cover"
-      />
-      <div>
-        <p className="text-neutral-600 font-semibold tracking-tight text-xl">
-          BERITA | {date}
-        </p>
-        <p className="text-[22px] text-neutral-950 font-semibold tracking-tight">
-          {title}
-        </p>
+    <div
+      className={`flex ${
+        horizontal ? "flex-row-reverse" : "flex-col max-w-[400px]"
+      } gap-4 `}
+    >
+      <div className={`${horizontal ? "md:w-[600px]" : ""}`}>
+        <Image
+          src={imgUrl}
+          width={400}
+          height={244}
+          alt="post_image"
+          className="h-auto w-full object-cover"
+        />
       </div>
-      <Link
-        href={`/berita/${index}`}
-        className="text-blue_primary font-bold text-xl"
-      >
-        SELENGKAPNYA
-      </Link>
+      <div className={`${horizontal ? "flex flex-col flex-1 gap-6" : ""}`}>
+        <div>
+          <p className="text-neutral-600 font-semibold tracking-tight text-xl">
+            {horizontal ? date : `BERITA | ${date}`}
+          </p>
+          <p
+            className={`${
+              horizontal ? "text-4xl" : "text-[22px]"
+            } text-neutral-950 font-semibold tracking-tight`}
+          >
+            {title}
+          </p>
+          {horizontal && (
+            <div
+              className="text-xl text-neutral-800 text-justify line-clamp-3 text-ellipsis overflow-hidden"
+              style={{ lineHeight: "1.5em" }}
+              dangerouslySetInnerHTML={{ __html: description! }}
+            ></div>
+          )}
+        </div>
+        <Link
+          href={`/berita/${index}`}
+          className="text-blue_primary font-bold text-xl"
+        >
+          SELENGKAPNYA
+        </Link>
+      </div>
     </div>
   );
 }

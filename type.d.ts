@@ -7,3 +7,14 @@ type Berita = {
   author: string;
   tags: string[];
 };
+
+type User = {
+  email: string;
+  nama: string;
+  jenisKelamin: string;
+  phone: string;
+  tglLahir: string;
+  address?: string;
+  pendidikan?: string;
+  pekerjaan?: string;
+};

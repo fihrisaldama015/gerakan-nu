@@ -1,9 +1,11 @@
 import NavbarDropdown from "@/components/NavbarDropdown";
 import NavbarMenu from "@/components/molecules/NavbarMenu";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 function Header() {
+  const accessToken = cookies().get("accessToken")!;
   return (
     <header className="fixed bg-white w-screen h-[6rem] shadow-md py-4 px-10 flex justify-between">
       <Link href="/">
@@ -18,8 +20,8 @@ function Header() {
         />
       </Link>
       <div className="flex gap-4 items-center">
-        <NavbarDropdown />
-        <NavbarMenu />
+        <NavbarDropdown isLogin={accessToken !== undefined} />
+        <NavbarMenu isLogin={accessToken !== undefined} />
       </div>
     </header>
   );
