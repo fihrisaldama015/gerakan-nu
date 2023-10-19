@@ -38,11 +38,20 @@ function CommentCard({ data }: CommentProps) {
           <span className="mb-2 flex gap-2 items-center">
             <h1 className="text-lg font-semibold">{data.username}</h1>
             <Image src="/icons/clock.svg" width={12} height={12} alt="clock" />
-            <p className="text-sm">{data.date}</p>
+            <p className="text-sm">
+              {new Date(data.date).toLocaleDateString("id-ID", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                timeZone: "Asia/Jakarta",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </p>
           </span>
           <p className="mb-5 font-medium text-base">{data.comment}</p>
           <div className="flex gap-20">
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Image
                 src="/icons/like.svg"
                 alt="like"
@@ -69,7 +78,7 @@ function CommentCard({ data }: CommentProps) {
               <span className="text-xl font-bold text-neutral-900">
                 {data.dislikes}
               </span>
-            </div>
+            </div> */}
             <div
               onClick={() => setIsReply(true)}
               className="flex items-center gap-2 cursor-pointer"

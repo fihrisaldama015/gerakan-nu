@@ -34,7 +34,7 @@ function NewsCard({
         />
       </div>
       <div className={`${horizontal ? "flex flex-col flex-1 gap-6" : ""}`}>
-        <div>
+        <div className={`flex flex-col ${horizontal ? "gap-7" : "gap-3"}`}>
           <p className="text-neutral-600 font-semibold tracking-tight text-xl">
             {horizontal ? date : `BERITA | ${date}`}
           </p>

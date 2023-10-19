@@ -17,7 +17,15 @@ async function NewsDetail({ params }: { params: { newsId: string } }) {
       <div className="mb-5 flex gap-2 justify-between items-center">
         <div>
           <p className="text-neutral-600 text-xl font-semibold">
-            BERITA | {new Date(berita.date).toLocaleString()}
+            BERITA |{" "}
+            {new Date(berita.date).toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+              timeZone: "Asia/Jakarta",
+              hour: "numeric",
+              minute: "numeric",
+            })}
           </p>
           <h1
             className="text-5xl font-semibold tracking-tighter"

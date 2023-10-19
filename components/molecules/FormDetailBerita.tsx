@@ -6,12 +6,11 @@ import {
   convertFromRaw,
   convertToRaw,
 } from "draft-js";
-import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((v) => v.Editor),
   {
@@ -35,16 +34,9 @@ function FormDetailBerita() {
 
     const detailBerita: { model: RawDraftContentState; tags: string[] } =
       JSON.parse(local_detailBerita);
-    // setModel(detailBerita.model);
     setTags(detailBerita.tags);
     const state = convertFromRaw(detailBerita.model);
     setEditorState(EditorState.createWithContent(state));
-    // const blocksFromHTML = convertFromHTML(detailBerita.model);
-    // const state = ContentState.createFromBlockArray(
-    //   blocksFromHTML.contentBlocks,
-    //   blocksFromHTML.entityMap
-    // );
-    // setEditorState(EditorState.createWithContent(state));
   }, []);
 
   const handleAddBerita = (e: FormEvent<HTMLFormElement>) => {

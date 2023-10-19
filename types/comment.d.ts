@@ -4,8 +4,8 @@ export type Comment = {
   avatar: string;
   comment: string;
   date: string;
-  likes: number;
-  dislikes: number;
+  likes?: number;
+  dislikes?: number;
   commentParentId?: number;
   commentChild?: Comment[];
 };

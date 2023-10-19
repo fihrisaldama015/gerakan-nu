@@ -1,21 +1,7 @@
 import ProfileCard from "@/components/molecules/ProfileCard";
 import UserDetail from "@/components/molecules/UserDetail";
-import { cookies } from "next/headers";
+import { getUserData } from "@/utils/user";
 import Image from "next/image";
-
-const getUserData = async () => {
-  const cookieStore = cookies();
-  const response = await fetch(process.env.NEXT_PUBLIC_APP_URL + "/api/user", {
-    next: { revalidate: 0 },
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${cookieStore.get("accessToken")?.value}`,
-    },
-  });
-  const data = await response.json();
-  return data;
-};
 
 async function Profile() {
   const { data: user }: { data: User } = await getUserData();

@@ -26,11 +26,12 @@ export async function GET(request: Request) {
     const docRef = doc(db, "users", `${email}`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
+      const { password, ...user } = docSnap.data();
       const response = NextResponse.json(
         {
           success: true,
           message: "User Data successfully",
-          data: docSnap.data(),
+          data: user as User,
         },
         { status: 200, headers: { "content-type": "application/json" } }
       );
