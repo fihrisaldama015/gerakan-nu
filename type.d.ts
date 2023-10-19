@@ -1,10 +1,14 @@
 type Berita = {
-  id: number;
+  id: string;
   title: string;
   body: string;
-  imgUrl: string;
+  dokumentasi: {
+    keterangan: string;
+    url: string;
+  };
   date: string;
   author: string;
+  city?: string;
   tags: string[];
 };
 

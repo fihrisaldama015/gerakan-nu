@@ -1,11 +1,14 @@
 import Hero from "@/components/Hero";
 import ArrowDown from "@/components/atoms/arrow";
 import AdminBeritaCard from "@/components/molecules/AdminBeritaCard";
-import { BERITA_DUMMY } from "@/utils/data";
+import { getAllBerita } from "@/utils/berita";
 import Image from "next/image";
 import Link from "next/link";
 
-function AdminPage() {
+async function AdminPage() {
+  const berita = await getAllBerita();
+  if (!berita) return null;
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Hero page="admin" />
@@ -15,7 +18,7 @@ function AdminPage() {
           Beberapa Berita Yang Telah Di Rilis
         </p>
         <div className="flex flex-col gap-3">
-          {BERITA_DUMMY.map((berita: Berita, index) => (
+          {berita.slice(0, 4).map((berita: Berita, index) => (
             <AdminBeritaCard key={index} berita={berita} />
           ))}
           <Link

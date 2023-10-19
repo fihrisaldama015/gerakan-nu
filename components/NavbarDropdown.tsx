@@ -29,10 +29,12 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
             </p>
           </li>
         </Link>
-        <li className="flex gap-[10px] items-center">
-          <p>Notifikasi</p>
-          <ArrowDown stroke="black" />
-        </li>
+        <Link href="/admin/berita">
+          <li className="flex gap-[10px] items-center">
+            <p>Notifikasi</p>
+            <ArrowDown stroke="black" />
+          </li>
+        </Link>
       </ul>
     );
   }

@@ -1,3 +1,4 @@
+"use client";
 import FormDetailBerita from "@/components/molecules/FormDetailBerita";
 import Image from "next/image";
 import Link from "next/link";

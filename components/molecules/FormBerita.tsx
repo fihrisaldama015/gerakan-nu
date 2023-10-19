@@ -5,10 +5,14 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 function FormBerita() {
-  const [judul, setJudul] = useState<string>("");
-  const [penulis, setPenulis] = useState<string>("");
-  const [tglBerita, setTglBerita] = useState<string>("");
-  const [kota, setKota] = useState<string>("");
+  const berita = JSON.parse(localStorage.getItem("berita")!);
+
+  const [judul, setJudul] = useState<string>(berita ? berita.judul : "");
+  const [penulis, setPenulis] = useState<string>(berita ? berita.penulis : "");
+  const [tglBerita, setTglBerita] = useState<string>(
+    berita ? berita.tglBerita : ""
+  );
+  const [kota, setKota] = useState<string>(berita ? berita.kota : "");
   const router = useRouter();
   const handleAddBerita = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

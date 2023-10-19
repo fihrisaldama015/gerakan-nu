@@ -1,26 +1,29 @@
-import { BERITA_DUMMY } from "@/utils/data";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
 import NewsCard from "@/components/molecules/NewsCard";
-import { getDetailBerita } from "@/utils/berita";
+import { getAllBerita, getBerita } from "@/utils/berita";
+import { BERITA_DUMMY } from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
 
-function NewsDetail({ params }: { params: { newsId: string } }) {
-  const berita = getDetailBerita(parseInt(params.newsId));
+async function NewsDetail({ params }: { params: { newsId: string } }) {
+  const berita = await getBerita(params.newsId);
+  const allBerita = await getAllBerita();
+  if (!berita) return null;
+  if (!allBerita) return null;
+
   return (
     <section className="px-10 py-6 flex flex-col gap-5">
       <Breadcrumbs title={berita.title} />
       <div className="mb-5 flex gap-2 justify-between items-center">
         <div>
           <p className="text-neutral-600 text-xl font-semibold">
-            BERITA | 10-07-2023 | 13.00 WIB
+            BERITA | {new Date(berita.date).toLocaleString()}
           </p>
           <h1
             className="text-5xl font-semibold tracking-tighter"
             style={{ lineHeight: "1.5em" }}
           >
-            Anies Baswedan Bersama Muhaimin Iskandar resmi jadi Paslon Presiden
-            Pada periode 2024 - 2029
+            {berita.title}
           </h1>
           <div className="my-7 flex gap-16">
             <Image
@@ -55,17 +58,25 @@ function NewsDetail({ params }: { params: { newsId: string } }) {
             </p>
           </div>
         </div>
-        <Image
-          src="/PostImage.png"
-          width={400}
-          height={244}
-          alt="postImage"
-          className="h-auto w-[600px] object-contain"
-        />
+        <div className="flex flex-col items-center gap-3">
+          <Image
+            src={berita.dokumentasi.url}
+            width={400}
+            height={244}
+            alt="postImage"
+            className="h-auto w-[600px] object-contain"
+          />
+          <p>Gambar: {berita.dokumentasi.keterangan}</p>
+        </div>
       </div>
       <div className="pr-10 flex flex-col gap-2">
         <h3 className="text-3xl font-bold text-neutral-900">
-          Surabaya, 10 September 2023
+          {new Date(berita.date).toLocaleDateString("id-ID", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </h3>
         <div
           className="text-xl text-neutral-800 text-justify"
@@ -108,14 +119,17 @@ function NewsDetail({ params }: { params: { newsId: string } }) {
           PILIHAN UNTUK ANDA
         </h1>
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-          {BERITA_DUMMY.map((berita: Berita, index: number) => (
+          {allBerita.map((berita: Berita, index: number) => (
             <NewsCard
               key={index}
               index={berita.id}
-              imgUrl="/PostImage.png"
-              date="10-07-2023"
-              title="Anies Baswedan Bersama Muhaimin Iskandar resmi jadi Paslon Presiden
-          Pada periode 2024 - 2029"
+              imgUrl={berita.dokumentasi.url}
+              date={new Date(berita.date).toLocaleDateString("id-ID", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+              title={berita.title}
             />
           ))}
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type NewsCardProps = {
-  index: number;
+  index: string;
   imgUrl: string;
   title: string;
   date: string;

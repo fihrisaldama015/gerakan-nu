@@ -5,3 +5,7 @@
 p, h1, h2, h3, h4, h5, h6, a, li, textarea, option, button, input, textarea, sup, sub {
   @apply antialiased; 
 }
+
+.wrapperEditor{
+  @apply p-3 ring-2 focus:ring-blue_primary ring-black/10 rounded-md;
+}

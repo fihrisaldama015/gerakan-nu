@@ -1,11 +1,15 @@
 "use client";
 import { previewNewsImageURL, uploadNewsImages } from "@/lib/bucket";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 function FormDokumentasiBerita() {
-  const [gambar, setGambar] = useState<StringObject>({});
+  const dokumentasi = JSON.parse(localStorage.getItem("dokumentasi")!);
+  const [gambar, setGambar] = useState<StringObject>(
+    dokumentasi ? dokumentasi : {}
+  );
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const router = useRouter();
@@ -64,6 +68,18 @@ function FormDokumentasiBerita() {
           onChange={handleAdditionalFile}
           className="py-4 px-7 ring-1 rounded-[10px] placeholder:font-bold focus:outline-blue_primary"
         />
+        {gambar.hasOwnProperty("url") && (
+          <div className="flex flex-col gap-3">
+            <p>Preview gambar</p>
+            <Image
+              src={gambar["url"]}
+              alt="dokumentasi"
+              width={400}
+              height={244}
+              className="h-auto w-[600px] object-contain rounded-md"
+            />
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-3">
         <label htmlFor="keterangan" className="text-3xl font-bold">
@@ -94,32 +110,34 @@ function FormDokumentasiBerita() {
         Tambahkan Gambar Lainnya
       </button>
       <div className="flex gap-5">
-        <button
-          type="button"
-          className="relative py-3 px-5 w-full text-2xl font-bold text-white bg-[#B60000] rounded-[20px] hover:brightness-110 transition-all"
-        >
-          <Image
-            src="/icons/next.svg"
-            alt="next"
-            width={30}
-            height={30}
-            className="absolute left-4 rotate-180"
-          />
-          Sebelumnya
-        </button>
+        <Link href="/admin/berita/add" className="flex flex-1">
+          <button
+            type="button"
+            className="py-3 px-5 w-full flex items-center justify-between gap-3 text-2xl font-bold text-white bg-[#B60000] rounded-[20px] hover:brightness-110 transition-all"
+          >
+            <Image
+              src="/icons/next.svg"
+              alt="next"
+              width={30}
+              height={30}
+              className="rotate-180"
+            />
+            Sebelumnya
+          </button>
+        </Link>
         <button
           type="submit"
           disabled={isLoading}
-          className="relative py-3 px-5 w-full text-2xl font-bold text-white bg-blue_primary rounded-[20px] hover:brightness-110 transition-all disabled:cursor-not-allowed disabled:bg-slate-500"
+          className="py-3 px-5 flex flex-1 justify-between items-center gap-3 text-2xl font-bold text-white bg-blue_primary rounded-[20px] hover:brightness-110 transition-all disabled:cursor-not-allowed disabled:bg-slate-500"
         >
+          Selanjutnya
           <Image
             src="/icons/next.svg"
             alt="next"
             width={30}
             height={30}
-            className="absolute right-4"
+            className=""
           />
-          Selanjutnya
         </button>
       </div>
     </form>

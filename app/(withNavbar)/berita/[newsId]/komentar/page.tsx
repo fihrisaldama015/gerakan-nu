@@ -2,13 +2,14 @@ import ArrowDown from "@/components/atoms/arrow";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
 import CommentCard from "@/components/molecules/CommentCard";
 import { Comment } from "@/types/comment";
-import { getDetailBerita } from "@/utils/berita";
+import { getBerita } from "@/utils/berita";
 import { COMMENT_DUMMY } from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
 
-function Komentar({ params }: { params: { newsId: string } }) {
-  const berita = getDetailBerita(parseInt(params.newsId));
+async function Komentar({ params }: { params: { newsId: string } }) {
+  const berita = await getBerita(params.newsId);
+  if (!berita) return null;
   return (
     <section className="px-10 py-6 flex flex-col gap-5">
       <Breadcrumbs title={berita.title} />
@@ -17,13 +18,13 @@ function Komentar({ params }: { params: { newsId: string } }) {
       </h1>
       <div className="p-5 pr-8 rounded-[30px] flex gap-7 justify-between bg-[#C9C9C9]">
         <Image
-          src="/PostImage.png"
+          src={berita.dokumentasi.url}
           width={400}
           height={244}
           alt="postImage"
-          className="w-auto h-auto object-contain rounded-[20px]"
+          className="w-auto h-[16rem] object-contain rounded-[20px]"
         />
-        <div>
+        <div className="flex flex-col flex-1">
           <h1 className="mb-2 text-3xl font-semibold">{berita.title}</h1>
           <b className="text-lg">{berita.author}</b>
           <p className="mb-2 text-lg">{berita.date}</p>
