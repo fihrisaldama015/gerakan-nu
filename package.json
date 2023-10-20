@@ -21,7 +21,8 @@
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "swiper": "^10.3.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.1",

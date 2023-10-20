@@ -2,6 +2,7 @@ import Berita from "@/components/Berita";
 import Hero from "@/components/Hero";
 import Layanan from "@/components/Layanan";
 import Live from "@/components/Live";
+import Slider from "@/components/Slider";
 
 export default function Home() {
   return (
