@@ -68,13 +68,13 @@ async function NewsDetail({ params }: { params: { newsId: string } }) {
         </div>
         <div className="flex flex-col items-center gap-3">
           <Image
-            src={berita.dokumentasi.url}
+            src={berita.dokumentasi[0].url}
             width={400}
             height={244}
             alt="postImage"
             className="h-auto w-[600px] object-contain"
           />
-          <p>Gambar: {berita.dokumentasi.keterangan}</p>
+          <p>Gambar: {berita.dokumentasi[0].keterangan}</p>
         </div>
       </div>
       <div className="pr-10 flex flex-col gap-2">
@@ -131,7 +131,7 @@ async function NewsDetail({ params }: { params: { newsId: string } }) {
             <NewsCard
               key={index}
               index={berita.id}
-              imgUrl={berita.dokumentasi.url}
+              dokumentasi={berita.dokumentasi}
               date={new Date(berita.date).toLocaleDateString("id-ID", {
                 year: "numeric",
                 month: "long",

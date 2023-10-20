@@ -3,7 +3,7 @@ import Link from "next/link";
 
 type NewsCardProps = {
   index: string;
-  imgUrl: string;
+  dokumentasi: Dokumentasi[];
   title: string;
   date: string;
   horizontal?: true;
@@ -12,7 +12,7 @@ type NewsCardProps = {
 
 function NewsCard({
   index,
-  imgUrl,
+  dokumentasi,
   title,
   date,
   horizontal,
@@ -26,7 +26,7 @@ function NewsCard({
     >
       <div className={`${horizontal ? "md:w-[600px]" : ""}`}>
         <Image
-          src={imgUrl}
+          src={dokumentasi[0].url}
           width={400}
           height={244}
           alt="post_image"

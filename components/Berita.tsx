@@ -15,7 +15,7 @@ async function Berita() {
           <NewsCard
             key={index}
             index={berita.id}
-            imgUrl={berita.dokumentasi.url}
+            dokumentasi={berita.dokumentasi}
             date={new Date(berita.date).toLocaleDateString("id-ID", {
               weekday: "long",
               year: "numeric",

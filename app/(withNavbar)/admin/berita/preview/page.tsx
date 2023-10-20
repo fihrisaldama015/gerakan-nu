@@ -98,7 +98,7 @@ function PreviewBerita() {
         </div>
         <div className="flex flex-col items-center gap-3">
           <Image
-            src={dokumentasi.url}
+            src={dokumentasi[0].url}
             width={400}
             height={244}
             alt="postImage"

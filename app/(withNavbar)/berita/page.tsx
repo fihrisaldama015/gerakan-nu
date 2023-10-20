@@ -1,7 +1,6 @@
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
 import NewsCard from "@/components/molecules/NewsCard";
 import { getAllBerita } from "@/utils/berita";
-import { BERITA_DUMMY } from "@/utils/data";
 
 async function BeritaPage() {
   const berita = await getAllBerita();
@@ -13,7 +12,7 @@ async function BeritaPage() {
         <NewsCard
           key={index}
           index={berita.id}
-          imgUrl={berita.dokumentasi.url}
+          dokumentasi={berita.dokumentasi}
           date={new Date(berita.date).toLocaleDateString("id-ID", {
             weekday: "long",
             year: "numeric",
@@ -42,7 +41,7 @@ async function BeritaPage() {
           <NewsCard
             key={index}
             index={berita.id}
-            imgUrl={berita.dokumentasi.url}
+            dokumentasi={berita.dokumentasi}
             date={new Date(berita.date).toLocaleDateString("id-ID", {
               weekday: "long",
               year: "numeric",

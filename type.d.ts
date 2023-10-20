@@ -2,14 +2,16 @@ type Berita = {
   id: string;
   title: string;
   body: string;
-  dokumentasi: {
-    keterangan: string;
-    url: string;
-  };
+  dokumentasi: Dokumentasi[];
   date: string;
   author: string;
   city?: string;
   tags: string[];
+};
+
+type Dokumentasi = {
+  keterangan: string;
+  url: string;
 };
 
 type User = {

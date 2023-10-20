@@ -29,7 +29,7 @@ function AdminBeritaCard({ berita }: { berita: Berita }) {
       <div className="flex-shrink-0 flex justify-center">
         <Link href={`/berita/${berita.id}`}>
           <Image
-            src={berita.dokumentasi.url}
+            src={berita.dokumentasi[0].url}
             width={300}
             height={300}
             alt="post"

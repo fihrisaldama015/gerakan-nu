@@ -17,10 +17,7 @@ export async function GET(request: Request) {
         id: doc.id,
         title: doc.data().title as string,
         body: doc.data().body as string,
-        dokumentasi: {
-          keterangan: doc.data().dokumentasi.keterangan as string,
-          url: doc.data().dokumentasi.url as string,
-        },
+        dokumentasi: doc.data().dokumentasi as Dokumentasi[],
         date: doc.data().date as string,
         author: doc.data().author as string,
         tags: doc.data().tags as string[],

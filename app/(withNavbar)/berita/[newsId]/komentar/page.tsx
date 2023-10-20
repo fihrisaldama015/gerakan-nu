@@ -24,7 +24,7 @@ async function Komentar({ params }: { params: { newsId: string } }) {
       </h1>
       <div className="p-5 pr-8 rounded-[30px] flex gap-7 justify-between bg-slate-200">
         <Image
-          src={berita.dokumentasi.url}
+          src={berita.dokumentasi[0].url}
           width={400}
           height={244}
           alt="postImage"
