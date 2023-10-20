@@ -1,9 +1,9 @@
-import { BERITA_DUMMY } from "@/utils/data";
+// import { BERITA_DUMMY } from "@/utils/data";
 
-const getDetailBerita = (id: string): Berita => {
-  const berita = BERITA_DUMMY.find((item: Berita) => item.id === id);
-  return berita as Berita;
-};
+// const getDetailBerita = (id: string): Berita => {
+//   const berita = BERITA_DUMMY.find((item: Berita) => item.id === id);
+//   return berita as Berita;
+// };
 
 const getBerita = async (id: string) => {
   try {
@@ -36,4 +36,4 @@ const getAllBerita = async () => {
   }
 };
 
-export { getDetailBerita, getBerita, getAllBerita };
+export { getBerita, getAllBerita };

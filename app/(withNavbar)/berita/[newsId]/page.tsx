@@ -1,7 +1,6 @@
 import Breadcrumbs from "@/components/molecules/Breadcrumbs";
 import NewsCard from "@/components/molecules/NewsCard";
 import { getAllBerita, getBerita } from "@/utils/berita";
-import { BERITA_DUMMY } from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
 
