@@ -26,7 +26,7 @@ function NewsCard({
     >
       <div className={`${horizontal ? "md:w-[600px]" : ""}`}>
         <Image
-          src={dokumentasi[0].url}
+          src={dokumentasi ? dokumentasi[0]?.url : ""}
           width={400}
           height={244}
           alt="post_image"
