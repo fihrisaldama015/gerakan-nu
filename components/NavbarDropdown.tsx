@@ -8,11 +8,13 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
   const pathname = usePathname();
   if (pathname.split("/")[1] === "admin") {
     return (
-      <ul className="flex gap-8 mr-4 text-lg font-semibold">
+      <ul className="flex sm:flex-row flex-col sm:gap-8 gap-5 mr-4 text-lg font-semibold">
         <Link href="/admin">
           <li className="flex gap-[10px] items-center">
             <p
-              className={`${pathname === "/admin" ? "text-blue_primary" : ""}`}
+              className={`${
+                pathname === "/admin" ? "sm:text-blue_primary text-black" : ""
+              }`}
             >
               Beranda
             </p>
@@ -22,7 +24,9 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
           <li className="flex gap-[10px] items-center">
             <p
               className={`${
-                pathname === "/admin/berita" ? "text-blue_primary" : ""
+                pathname === "/admin/berita"
+                  ? "sm:text-blue_primary text-black"
+                  : ""
               }`}
             >
               Berita
@@ -41,7 +45,7 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
 
   if (!isLogin) {
     return (
-      <ul className="flex gap-8 mr-4 text-lg font-semibold">
+      <ul className="flex sm:flex-row flex-col sm:gap-8 gap-5 mr-4 text-lg font-semibold">
         <li className="flex gap-[10px] items-center">
           <p>Event</p>
           <ArrowDown stroke="black" />
@@ -49,7 +53,9 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
         <Link href="/berita">
           <li className="flex gap-[10px] items-center">
             <p
-              className={`${pathname === "/berita" ? "text-blue_primary" : ""}`}
+              className={`${
+                pathname === "/berita" ? "sm:text-blue_primary text-black" : ""
+              }`}
             >
               Berita
             </p>
@@ -61,17 +67,25 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
   }
 
   return (
-    <ul className="flex gap-8 mr-4 text-lg font-semibold">
+    <ul className="flex sm:flex-row flex-col sm:gap-8 gap-5 mr-4 text-lg font-semibold">
       <Link href="/">
         <li className="flex gap-[10px] items-center">
-          <p className={`${pathname === "/" ? "text-blue_primary" : ""}`}>
+          <p
+            className={`${
+              pathname === "/" ? "sm:text-blue_primary text-black" : ""
+            }`}
+          >
             Beranda
           </p>
         </li>
       </Link>
       <Link href="/berita">
         <li className="flex gap-[10px] items-center">
-          <p className={`${pathname === "/berita" ? "text-blue_primary" : ""}`}>
+          <p
+            className={`${
+              pathname === "/berita" ? "sm:text-blue_primary text-black" : ""
+            }`}
+          >
             Berita
           </p>
           <ArrowDown stroke="black" />
@@ -84,7 +98,9 @@ function NavbarDropdown({ isLogin }: { isLogin?: boolean }) {
       <Link href="/profile">
         <li className="flex gap-[10px] items-center">
           <p
-            className={`${pathname === "/profile" ? "text-blue_primary" : ""}`}
+            className={`${
+              pathname === "/profile" ? "sm:text-blue_primary text-black" : ""
+            }`}
           >
             Profil
           </p>

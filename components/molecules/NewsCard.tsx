@@ -21,10 +21,10 @@ function NewsCard({
   return (
     <div
       className={`flex ${
-        horizontal ? "flex-row-reverse" : "flex-col max-w-[400px]"
+        horizontal ? "md:flex-row-reverse flex-col" : "flex-col max-w-[400px]"
       } gap-4 `}
     >
-      <div className={`${horizontal ? "md:w-[600px]" : ""}`}>
+      <div className={`${horizontal ? "md:w-[600px] w-full" : ""}`}>
         <Image
           src={dokumentasi ? dokumentasi[0]?.url : ""}
           width={400}

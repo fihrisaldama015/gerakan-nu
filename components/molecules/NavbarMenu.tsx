@@ -24,7 +24,7 @@ function NavbarMenu({ isLogin }: { isLogin?: boolean }) {
 
   if (pathname.split("/")[1] === "admin") {
     return (
-      <>
+      <div className="flex gap-3">
         <Link href="/admin/berita/add">
           <button
             className="py-1.5 px-4 flex items-center gap-3 font-semibold bg-blue_primary rounded-[20px] text-white"
@@ -41,12 +41,12 @@ function NavbarMenu({ isLogin }: { isLogin?: boolean }) {
         >
           Log Out
         </button>
-      </>
+      </div>
     );
   }
   if (!isLogin) {
     return (
-      <>
+      <div className="flex gap-3">
         <Link href="/login">
           <button className="py-1.5 px-4 rounded-lg bg-green_primary font-semibold text-white">
             Login
@@ -57,7 +57,7 @@ function NavbarMenu({ isLogin }: { isLogin?: boolean }) {
             Daftar
           </button>
         </Link>
-      </>
+      </div>
     );
   }
 

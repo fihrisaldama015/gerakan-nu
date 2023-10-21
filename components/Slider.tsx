@@ -35,9 +35,9 @@ function Slider({ berita }: { berita: Berita[] }) {
             quality={100}
           />
         </SwiperSlide>
-        {berita?.map((berita: Berita, index: number) => (
+        {berita?.slice(0, 4).map((berita: Berita, index: number) => (
           <SwiperSlide key={index}>
-            <div className="relative group">
+            <div className="relative">
               <Image
                 src={berita.dokumentasi ? berita.dokumentasi[0].url : ""}
                 width={1440}
@@ -48,9 +48,13 @@ function Slider({ berita }: { berita: Berita[] }) {
                 priority
                 quality={100}
               />
+
+              <span className="text-xs w-full absolute text-center bottom-8 text-black drop-shadow-md font-medium">
+                {berita.title}
+              </span>
               <Link
                 href={`/berita/${berita.id}`}
-                className="absolute top-[calc(50%-1.5rem)] left-[calc(50%-4.5rem)] flex justify-center items-center px-3 w-36 h-12 rounded-md shadow-md group-hover:bg-white text-slate-900 text-xl font-semibold hover:text-blue_primary transition-colors duration-300 ease-in-out"
+                className="absolute top-[calc(50%-1.5rem)] left-[calc(50%-4.5rem)] flex justify-center items-center px-3 w-36 h-12 rounded-md shadow-md bg-white text-slate-900 text-xl font-semibold hover:text-blue_primary transition-colors duration-300 ease-in-out"
               >
                 Lihat Berita
               </Link>

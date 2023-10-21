@@ -1,5 +1,4 @@
-import NavbarDropdown from "@/components/NavbarDropdown";
-import NavbarMenu from "@/components/molecules/NavbarMenu";
+import Navbar from "@/components/molecules/Navbar";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,10 +18,7 @@ function Header() {
           quality={50}
         />
       </Link>
-      <div className="flex gap-4 items-center">
-        <NavbarDropdown isLogin={accessToken !== undefined} />
-        <NavbarMenu isLogin={accessToken !== undefined} />
-      </div>
+      <Navbar isLogin={accessToken !== undefined} />
     </header>
   );
 }
