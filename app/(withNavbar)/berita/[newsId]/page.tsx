@@ -13,7 +13,7 @@ async function NewsDetail({ params }: { params: { newsId: string } }) {
   return (
     <section className="px-10 py-6 flex flex-col gap-5">
       <Breadcrumbs title={berita.title} />
-      <div className="mb-5 flex gap-2 justify-between items-center">
+      <div className="mb-5 flex md:flex-row flex-col gap-2 justify-between items-center">
         <div>
           <p className="text-neutral-600 text-xl font-semibold">
             BERITA |{" "}
@@ -91,7 +91,7 @@ async function NewsDetail({ params }: { params: { newsId: string } }) {
           dangerouslySetInnerHTML={{ __html: berita.body }}
         ></div>
       </div>
-      <div className="py-7 px-20 flex justify-between md:w-[80vw] mx-auto bg-[#C9C9C9] rounded-3xl">
+      <div className="py-7 px-20 flex flex-wrap gap-7 justify-between md:w-[80vw] mx-auto bg-[#C9C9C9] rounded-3xl">
         <div className="flex items-center gap-2">
           <Image src="/icons/like.svg" alt="like" width={50} height={50} />
           <span className="text-4xl font-bold text-blue_primary">10</span>

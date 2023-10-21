@@ -22,7 +22,7 @@ async function Komentar({ params }: { params: { newsId: string } }) {
       <h1 className="mt-6 text-4xl font-semibold border-b-8 border-green_primary w-fit">
         KOMENTAR
       </h1>
-      <div className="p-5 pr-8 rounded-[30px] flex gap-7 justify-between bg-slate-200">
+      <div className="p-5 pr-8 rounded-[30px] flex sm:flex-row flex-col gap-7 justify-between bg-slate-200">
         <Image
           src={berita.dokumentasi[0].url}
           width={400}

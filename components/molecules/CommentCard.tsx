@@ -35,19 +35,26 @@ function CommentCard({ data }: CommentProps) {
           className="w-[50px] h-auto object-contain"
         />
         <div>
-          <span className="mb-2 flex gap-2 items-center">
+          <span className="mb-2 flex sm:flex-row flex-col gap-2 sm:items-center ">
             <h1 className="text-lg font-semibold">{data.username}</h1>
-            <Image src="/icons/clock.svg" width={12} height={12} alt="clock" />
-            <p className="text-sm">
-              {new Date(data.date).toLocaleDateString("id-ID", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-                timeZone: "Asia/Jakarta",
-                hour: "numeric",
-                minute: "numeric",
-              })}
-            </p>
+            <span className="flex items-center gap-2">
+              <Image
+                src="/icons/clock.svg"
+                width={12}
+                height={12}
+                alt="clock"
+              />
+              <p className="text-sm">
+                {new Date(data.date).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  timeZone: "Asia/Jakarta",
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </p>
+            </span>
           </span>
           <p className="mb-5 font-medium text-base">{data.comment}</p>
           <div className="flex gap-20">
@@ -108,7 +115,7 @@ function CommentCard({ data }: CommentProps) {
               rows={10}
               onChange={(e) => setReply(e.target.value)}
               value={reply}
-              className="bg-neutral-800/20 p-5 rounded-[20px] h-[100px] placeholder:text-neutral-800 outline-none resize-none"
+              className="bg-neutral-800/20 p-5 rounded-[20px] w-full h-[100px] placeholder:text-neutral-800 outline-none resize-none"
               placeholder="Tulis Balasan Anda....."
             />
             <div className="flex flex-row-reverse gap-3">
