@@ -4,17 +4,44 @@ import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 type CommentProps = {
-  data: Comment;
+  comment: Comment;
+  newsId: string;
+  email: string;
 };
 
-function CommentCard({ data }: CommentProps) {
+function CommentCard({ comment, newsId, email }: CommentProps) {
   const [isReply, setIsReply] = useState<boolean>(false);
   const [reply, setReply] = useState<string>("");
 
-  const sendReply = (e: FormEvent<HTMLFormElement>) => {
+  const sendReply = async (
+    e: FormEvent<HTMLFormElement>,
+    commentId: string
+  ) => {
     e.preventDefault();
-    console.log("reply submitted");
-    console.log("reply => ", reply);
+    if (!reply) return alert("Balasan tidak boleh kosong");
+    if (!email) return alert("Anda harus login terlebih dahulu");
+    try {
+      const response = await fetch(
+        `/api/berita/${newsId}/komentar/${commentId}`,
+        {
+          method: "POST",
+          body: JSON.stringify({ message: reply, email }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) throw Error(data.message);
+
+      alert("Balasan berhasil dikirim");
+      location.reload();
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      }
+    }
     setReply("");
     setIsReply(false);
   };
@@ -36,7 +63,7 @@ function CommentCard({ data }: CommentProps) {
         />
         <div>
           <span className="mb-2 flex sm:flex-row flex-col gap-2 sm:items-center ">
-            <h1 className="text-lg font-semibold">{data.username}</h1>
+            <h1 className="text-lg font-semibold">{comment?.username}</h1>
             <span className="flex items-center gap-2">
               <Image
                 src="/icons/clock.svg"
@@ -45,7 +72,7 @@ function CommentCard({ data }: CommentProps) {
                 alt="clock"
               />
               <p className="text-sm">
-                {new Date(data.date).toLocaleDateString("id-ID", {
+                {new Date(comment?.date).toLocaleDateString("id-ID", {
                   day: "numeric",
                   month: "long",
                   year: "numeric",
@@ -56,36 +83,8 @@ function CommentCard({ data }: CommentProps) {
               </p>
             </span>
           </span>
-          <p className="mb-5 font-medium text-base">{data.comment}</p>
+          <p className="mb-5 font-medium text-base">{comment?.comment}</p>
           <div className="flex gap-20">
-            {/* <div className="flex items-center gap-2">
-              <Image
-                src="/icons/like.svg"
-                alt="like"
-                width={50}
-                height={50}
-                className="w-6 h-6 object-contain"
-              />
-              <span
-                className={`text-xl font-bold ${
-                  data.likes > 0 ? "text-blue_primary" : "text-neutral-900"
-                }`}
-              >
-                {data.likes}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Image
-                src="/icons/dislike.svg"
-                alt="like"
-                width={50}
-                height={50}
-                className="w-6 h-6 object-contain"
-              />
-              <span className="text-xl font-bold text-neutral-900">
-                {data.dislikes}
-              </span>
-            </div> */}
             <div
               onClick={() => setIsReply(true)}
               className="flex items-center gap-2 cursor-pointer"
@@ -103,7 +102,7 @@ function CommentCard({ data }: CommentProps) {
             </div>
           </div>
           <form
-            onSubmit={sendReply}
+            onSubmit={(e) => sendReply(e, comment?.id)}
             className={`p-5 flex flex-col gap-3 ${
               isReply ? "block" : "hidden"
             }`}
@@ -133,6 +132,45 @@ function CommentCard({ data }: CommentProps) {
               </button>
             </div>
           </form>
+          {comment?.commentChild &&
+            comment?.commentChild.map((child: Comment, id) => (
+              <div
+                key={id}
+                className="p-5 my-3 shadow-sm rounded-[20px] gap-4 bg-white flex items-start"
+              >
+                <Image
+                  src="/icons/avatar.svg"
+                  width={50}
+                  height={50}
+                  alt="avatar"
+                  className="w-[36px] h-auto object-contain"
+                />
+                <div>
+                  <span className="flex sm:flex-row flex-col gap-2 sm:items-center ">
+                    <h1 className="text-sm font-semibold">{child?.username}</h1>
+                    <span className="flex items-center gap-2">
+                      <Image
+                        src="/icons/clock.svg"
+                        width={12}
+                        height={12}
+                        alt="clock"
+                      />
+                      <p className="text-xs">
+                        {new Date(child?.date).toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                          timeZone: "Asia/Jakarta",
+                          hour: "numeric",
+                          minute: "numeric",
+                        })}
+                      </p>
+                    </span>
+                  </span>
+                  <p className="font-medium text-base">{child?.comment}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </div>

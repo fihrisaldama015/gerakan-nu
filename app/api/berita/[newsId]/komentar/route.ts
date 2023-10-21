@@ -24,13 +24,14 @@ export async function GET(
     const querySnapshot = await getDocs(commentRef);
     querySnapshot.forEach((doc) => {
       const item = doc.data() as Comment;
-      const { username, avatar, comment, date } = item;
+      const { username, avatar, comment, date, commentChild } = item;
       const temp = {
         id: doc.id,
         username,
         avatar,
         comment,
         date,
+        commentChild,
       };
       allComment.push(temp);
     });

@@ -64,7 +64,11 @@ async function Komentar({ params }: { params: { newsId: string } }) {
         </span>
         {komentar.map((comment: Comment, index: number) => (
           <div key={index}>
-            <CommentCard data={comment} />
+            <CommentCard
+              newsId={params.newsId}
+              email={user?.email}
+              comment={comment}
+            />
           </div>
         ))}
         {komentar.length === 0 && (

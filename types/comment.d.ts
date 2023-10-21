@@ -3,7 +3,7 @@ export type Comment = {
   username: string;
   avatar: string;
   comment: string;
-  date: string;
+  date: number;
   likes?: number;
   dislikes?: number;
   commentParentId?: number;
