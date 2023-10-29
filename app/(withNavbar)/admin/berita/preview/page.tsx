@@ -104,7 +104,7 @@ function PreviewBerita() {
             alt="postImage"
             className="h-auto w-[600px] object-contain"
           />
-          <p>Gambar: {dokumentasi.keterangan}</p>
+          <p>Gambar: {dokumentasi[0].keterangan}</p>
         </div>
       </div>
       <div className="pr-10 flex flex-col gap-7">

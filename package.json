@@ -14,16 +14,16 @@
     "bcrypt": "^5.1.1",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^10.5.0",
-    "immutable": "^5.0.0-beta.4",
+    "immutable": "^3.8.2",
     "jsonwebtoken": "^9.0.2",
     "nanoid": "3",
-    "next": "13.5.4",
+    "next": "^14.0.0",
     "react": "^18",
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
     "sharp": "^0.32.6",
-    "swiper": "^10.3.1"
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.1",
